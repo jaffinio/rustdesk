@@ -1,0 +1,31 @@
+name: Flutter Tag Build
+
+on:
+  workflow_dispatch:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-[0-9]+'
+  schedule:
+    # schedule build every wednesday
+    - cron: "1 0 * * 3"
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-[0-9]+'
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-[0-9]+'
+
+jobs:
+  run-flutter-tag-build:
+    uses: ./.github/workflows/flutter-build_windows_only.yml
+    secrets: inherit
+    with:
+      upload-artifact: true
+      upload-tag: ${{ github.ref_name }}
