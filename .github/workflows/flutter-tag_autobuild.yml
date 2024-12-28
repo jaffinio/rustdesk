@@ -1,20 +1,7 @@
-name: Flutter Tag Build
+name: Flutter Tag Build Windows Only
 
 on:
   workflow_dispatch:
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
-      - '[0-9]+.[0-9]+.[0-9]+'
-      - 'v[0-9]+.[0-9]+.[0-9]+-[0-9]+'
-      - '[0-9]+.[0-9]+.[0-9]+-[0-9]+'
-  schedule:
-    # schedule build every wednesday
-    - cron: "1 0 * * 3"
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
-      - '[0-9]+.[0-9]+.[0-9]+'
-      - 'v[0-9]+.[0-9]+.[0-9]+-[0-9]+'
-      - '[0-9]+.[0-9]+.[0-9]+-[0-9]+'
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
